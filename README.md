@@ -1,0 +1,1 @@
+El laboratorio consiste en la creacion de un sistema de lucha robotica, con un maximo de 10 robots donde cada uno tendra estadisticas como ataque, vida y demás. 
