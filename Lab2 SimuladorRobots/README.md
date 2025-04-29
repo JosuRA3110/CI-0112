@@ -1,0 +1,1 @@
+Este repositorio se utilizara de ahora en adelante para realizar los trabajos necesarios para el curso de programacion y sus datos. 

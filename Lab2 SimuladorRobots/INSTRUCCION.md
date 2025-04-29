@@ -1,0 +1,5 @@
+Para ejecutar el programa de simular robots es sencilo dirijase a la terminal, luego navegue en la misma hasta ubicarse ene el Lab2 SimuladorRobots y en ese caso decide se si,
+realizara la simulacion con los puntos extra o sin ellos, luego al decidir coloque en la terminal lo siguiente java JuegoBatalla y ello iniciara la simulacion, donde usted como usuario
+podra indicar cuantos robots desea en batalla de 2 a 10 y luego podra darles a cada uno un nombre, puntos de vida, ataque y si así lo eligio defensa. Por ultimo, posterior a la designacion
+de atributos para los robots de iniciaria el enfrentamiento aleatorio donde en cada ronda usted decidira si desea continuar la batalla o detener la simulaicon y ver el estado de los robot,
+si continua la batalla esta se alargara hasta que solo un robot quede con vida. 

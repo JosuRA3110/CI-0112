@@ -1,3 +1,4 @@
+//Juego de Batalla
 import java.util.Scanner;
 import java.util.Random;//En este caso estamos implementando la clase Random para que se seleccione un numero aleatorio del 1 al 10 y que los robots puedan atacarse entre si de forma randomizada tal y como se solicita.
 
@@ -6,12 +7,13 @@ public class JuegoBatalla{
 
 //Atributos del arreglo
 private Robots[] robots; //Note que aca declaramos el arrey donde estaran los objetos, robots en este caso.
+private Random random; //Declaramos la variable random para usarla mas adelante. 
 
 //Metodo para iniciar la batalla:
 public void iniciarBatalla(){//Ojo aca cantRobots es la cantidad de robots que recibiremos de parte del usuario para realizar la batalla. 
 
     Scanner scanner = new Scanner(System.in);
-    Random random = new Random();//Note que aca creamos un objeto "random" donde podremos generar numeros aleatorios para que las batallas sean al azar entre los diferentes robots :)
+    random = new Random();//Note que aca creamos un objeto "random" donde podremos generar numeros aleatorios para que las batallas sean al azar entre los diferentes robots :)
     System.out.println("Bienvenido al menu de batalla robotica");
     System.out.println("-------------------------------------------");
     System.out.println("Ingrese la cantidad de robots que participaran, recuerde que deben de ser entre 2 a 10");
@@ -32,7 +34,7 @@ public void iniciarBatalla(){//Ojo aca cantRobots es la cantidad de robots que r
         String nombre = scanner.nextLine();
         scanner.nextLine();
 
-        System.out.println("Por favor ingrese los puntos de vida del robot "+ (i + 1)+ "(debed de estar entre 50 y 100)");
+        System.out.println("Por favor ingrese los puntos de vida del robot "+ (i + 1)+ "(deben de estar entre 50 y 100)");
         int puntosVida = scanner.nextInt();
         scanner.nextLine();
         if(puntosVida<50 || puntosVida>100){
@@ -48,12 +50,21 @@ public void iniciarBatalla(){//Ojo aca cantRobots es la cantidad de robots que r
             return;
         }
 
-        robots[i] = new Robots(nombre, puntosVida, ataque);//Para este punto ya el usuario nos dio todos los datos que necesitamos con los parametros adecuados, entonces nada mas los asignamos a los respectivos robots del arrey.
-        System.out.println("Su robot "+ nombre + "fue creado con exito,tiene los siguientes atributos:");
+        System.out.println("Por favor ingrese la defensa del robot "+ (i + 1) +" (debe de estar entre 0 y 9)");//Aca intente seguir la logica del juego y limitar la defensa para evitar que los robots no hagan daño, por lo menos 1 punto de daño que hagan.
+        int defensa = scanner.nextInt();
+        scanner.nextLine();
+        if(defensa<0 || defensa>9){
+            System.out.println("Debe de ingresar de 0 a 9 de defensa para empezar la batalla.");
+            return;
+        }
+
+        robots[i] = new Robots(nombre, puntosVida, ataque, defensa);//Para este punto ya el usuario nos dio todos los datos que necesitamos con los parametros adecuados, entonces nada mas los asignamos a los respectivos robots del arrey.
+        System.out.println("Su robot "+ nombre + " fue creado con exito,tiene los siguientes atributos: ");
         System.out.println("Puntos de vida de "+ nombre + ": "+ puntosVida);
         System.out.println("Ataque de "+ nombre+ ": "+ ataque);
+        System.out.println("Defensa de "+ nombre+ ": "+ defensa);
     }
-    System.out.println("/n¡¡Todos listos, empecemos los combates!!/n");
+    System.out.println("¡¡Todos listos, empecemos los combates!!");
     
     /*Con todos los robot creados ahora me centrare en las batallas*/
     //Batalla en bucle hasta que un solo robot quede con vida: Ojo todos los metodos utilizados en el bucle se presentan posterior a el while de la batalla.
@@ -66,12 +77,32 @@ public void iniciarBatalla(){//Ojo aca cantRobots es la cantidad de robots que r
                 }
             }
         }
-        System.out.println("-----------------------------------");
-        System.out.println("Iniciara una nueva ronda de combate");
-        System.out.println("-----------------------------------");
+        System.out.println("Desea continuar la batalla robotica? (si/no)");
+        String contSimu = scanner.nextLine();
+        if(contSimu.equals("no")){
+            mostrarEstadoRobot();
+            return;
+        }else{
+            System.out.println("-----------------------------------");
+            System.out.println("Iniciara una nueva ronda de combate");
+            System.out.println("-----------------------------------");
+        }
     }
-    mostrarGanador();/*Aqui mostramos al ganador despues de que el while diera fin, es decir no se encontrra
+    mostrarGanador();/*Aqui mostramos al ganador despues de que el while diera fin, es decir no se encontrara
     otro robot de forma aleatoria el cual atacar */
+    }
+    
+    //Metodo de pts extra, mostrar los estados de los robots.
+    private void mostrarEstadoRobot(){
+        System.out.println("El estado de los robots con vida es el siguiente:");
+        for(Robots robot : robots){
+            if(robot != null && robot.estaVivo()){
+                System.out.println(robot.getNombre() + " se encuentra de la siguiente manera: ");
+                System.out.println("Puntos de vida de "+ robot.getNombre() + ": "+ robot.getPuntosVida());
+                System.out.println("Ataque de "+ robot.getNombre()+ ": "+ robot.getAtaque());
+                System.out.println("Defensa de "+ robot.getNombre()+ ": "+ robot.getDefensa());
+            }
+        }
     }
 
     //Metodo para contar cuantos robots se encuentran con vida :)
@@ -103,7 +134,7 @@ public void iniciarBatalla(){//Ojo aca cantRobots es la cantidad de robots que r
     private void mostrarGanador(){
         for(Robots robot: robots){//Nuevamente recorremos todo el arrey y vemos los robots uno a uno.
             if(robot.estaVivo() && robot !=null){//Vemos cual de los robots queda con vida, es decir, es el ganador, pues este metodo es despues del while de batalla.
-                System.out.println("El ultimo robto en pie es......"+ robot.getNombre());/*Por ultimo obtenemos el nombre del robot encontrado con vida por el getNombre y con el return finalizamos la simulacion. */
+                System.out.println("El ultimo robot en pie es......"+ robot.getNombre());/*Por ultimo obtenemos el nombre del robot encontrado con vida por el getNombre y con el return finalizamos la simulacion. */
                 System.out.println("----------Felicidades:)--------------");
                 return;
             }
