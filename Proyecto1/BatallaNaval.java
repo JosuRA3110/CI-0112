@@ -7,5 +7,10 @@ gana la partida. El programa debe mostrar ambos tableros: el del jugador actual 
 barcos e impactos recibidos) y el tablero oculto del oponente (mostrando solo los disparos 
 realizados y sus resultados). */
 public class BatllaNaval{
+    private int[][] tablero1;//Aca creo los tableros para cada uno de los jugadores, note que son matrices pues requerimos de columnas y filas.
+    private int[][] tablero2;
+
+    private int[][] vistaTab1;//Declaro los tableros que veran los usuarios en consola de sus disparos y aciertos del otro tablero
+    private int[][] vistaTab2;
 
 }
