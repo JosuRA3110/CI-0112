@@ -17,8 +17,7 @@ public class BatallaNaval{
 
     private Scanner scanner = new Scanner(System.in); //Aca basicamente inicializamos los scanner que utilizaremos para la recoleccion de datos.
     
-
-    public static void main(String [] args){
+            public static void main(String [] args){//Este main es temporal solo lo uso para probar codigo
         BatallaNaval juego = new BatallaNaval();
         juego.tableroInicial();
 
@@ -30,7 +29,7 @@ public class BatallaNaval{
         juego.colcBarco(juego.tablero2);
         juego.mostrarTab(juego.tablero2);
 
-        System.out.println("Fin del setup, los tableros fueron mostrados.");
+        juego.iniciarTurnos();
     }
 
     public void tableroInicial(){
@@ -59,10 +58,10 @@ public class BatallaNaval{
             if(filaBarc<0 || filaBarc>= tablero.length  || columBarc < 0 || columBarc>= tablero.length){//Vea que aca tenemos que evitar que las filas y columnas sean igual a el tamaño del tablero pues nuestros tablero tiene 5 posiciones pero sus indices son de 0 a 4 por ende no pueden ser exactamente 5 las columnas o las filas pues acceden a algo que no existe.
                 System.out.println("Ojooo la posicion que dijito esta fuera del tablero debe de ser entre 0 y 4 ;)");
             }else 
-            if (tablero[filaBarc][columBarc].equals("🚢")){
+            if (tablero[filaBarc][columBarc].equals("■")){
                 System.out.println("Ya coloco un barco en esa posicion, debe de colocar los barcos en posiciones distintas");
             }else{
-                tablero[filaBarc][columBarc] = "🚢";
+                tablero[filaBarc][columBarc] = "■";//Aca el barco lo pude poner como B pero senti que quedaba muy simple asi q lo puse como cuadritos rellenos pa que se vea mas divertido ■ :)
                 barcsColc++;
                 System.out.println("Listoo, su barco fue colocado con exito en la posicion: ("+ filaBarc + ", "+ columBarc+ ")");
             }
@@ -86,5 +85,73 @@ public class BatallaNaval{
             System.out.println();//Aca otro salto de linea por cuestiones de orden en el tablero.
         }
     }
-    
+    //Ahora vamos con los metodos de disparar, la logica ya no me da T_T
+    public String disparar(String[][] tableroImpacto){
+        while (true) {//Ojo aca lo que decimos es que se repita esta secuencia hasta q lo que pase dentro del while se cumpla, esto con el fin de que no se dispare sobre una coordenada que anteriormente ya se disparo. 
+            System.out.println("Digite la posicion que desea impactar");
+            
+            System.out.println("Fila (0-4)");
+            int filadisp = scanner.nextInt();  
+
+            System.out.println("Columna (0-4)");
+            int columdisp = scanner.nextInt();//Note que para este punto ya sabemos la posicion donde se desea disparar, falta verificar si esa posicion esta en el tablero y si el disparo no fue realizado en un lugar donde ya se habia disparado con anterioridad, en parte esa es la idea del while true.
+
+            if(filadisp<0 || filadisp>=tableroImpacto.length || columdisp<0 || columdisp>=tableroImpacto.length){
+                System.out.println("Debe de digitar una coordenada que se encuentre dentro del tablero, es decir, en donde las filas y columnas por impactar esten entre 0 y 4");
+                continue;//Este continue lo que hace es que basicamente no se prosiga en el metodo de disparo si no se cumple con la condicional establecida, vuelve a preguntar al jugador por nuevas coordenadas de disparo
+            }else{
+                if(tableroImpacto[filadisp][columdisp].equals("O")){//Aca basicamente estamos diciendo que O es la zona donde disparamos con anterioridad, entonces si es igual reinicie el cuestionamiento
+                    System.out.println("Disparo anteriormente en esta zona, debe de disparar en una coordenada distinta ;)");
+                    continue;
+                }
+            }
+            if(tableroImpacto[filadisp][columdisp].equals("■")){
+                tableroImpacto[filadisp][columdisp]= "X";
+                return "impacto";
+            }else{
+                if(tableroImpacto[filadisp][columdisp].equals("-")){
+                    tableroImpacto[filadisp][columdisp]="O";
+                    return "fallo";
+                }
+            }
+        }//Listo aca ya terminamos el metodo de disparar, por cuestion de orden voy a realizar otro metodo donde determine y use los returns de impacto y fallo, para que cada vez que se presente impacto se repite disparar, si no pasa al otro jugador.
+
+    }
+
+    public void iniciarTurnos(){
+        int barcsJug1 = 3;//Note que aca como estamos en el primer turno lo que hacemos es que los barcos colados ya sean tres, pues desde un inicio ya los colocamos para cada jugador.
+        int barcsJug2 = 3;
+        boolean turnoJug1 = true;//Aca facilitamos el metodo usando la variable booleana donde ya sabemos si el jugador 1 va a empezar su turno
+        while(barcsJug1>0 && barcsJug2>0){//Parece un poco obvio las condicionales pero es simplmente notacion para saber que ya tenemos los barcos para iniciar el intercambio de turnos
+            if(turnoJug1){
+                System.out.println("Jugador 1 dispare!!");
+                String resultadodisp = disparar(tablero2);//Vea que aca lo que hacemos es decir, si el resultado del metodo disparar es una variable resultado y cuando aplico disparo al tablero del jugador 2 este me retorna algo, que hago con eso. Que posteriormente lo que hacemos es que si impacta, juege nuevamente y si falla va el otro jugador. Esa es la importancia de los returns declarados.
+                if(resultadodisp.equals("impacto")){
+                    barcsJug2--;//Aca lo que hacemos es como un contador de los barcos de los jugadores para ir viendo si eliminamos o no un barco rival con el metodo de disparar.
+                    System.out.println("El Jugador 1 dio en el blanco, puede repetir su turno");
+                }else{
+                    System.out.println("El Jugador 1 fallo su disparo, turno del Jugador 2");
+                    turnoJug1= false;//Este false lo que hace es que vayamos a el turno del jugador 2.
+                }
+            }else{
+                System.out.println("Jugador 2 dispare!!");
+                String resultadodisp = disparar(tablero1);//aca es un poco mas de lo mismo disparamos al tablero del jugador 1
+                if(resultadodisp.equals("impacto")){//Si impactamos restamos un barco al jugador 1.
+                    barcsJug1--;
+                    System.out.println("El Jugador 2 dio en el blanco, puede repetir su turno");
+                }else{
+                    System.out.println("El Jugador 2 fallo su disparo, turno del Jugador 1");
+                    turnoJug1= true;//Aqui esta la importancia del boolean que declaramos pues simplificamos el proceso de turnos para que se reitere hasta que los barcos sean destruidos, ya sea del jugador uno  o del jugador 2.
+                }
+
+            }
+        }
+        if(barcsJug1==0){//Aqui caemos cuando alguno de los barcos de los jugadores es menor o igual a cero, es decir, ya determinamos un ganador. 
+            System.out.println("¡¡Felicidades Jugador 2, eres el ganador!!");
+        }else{
+            if(barcsJug2==0){
+                System.out.println("¡¡Felicidades Jugador 1, eres el ganador!!");
+            }
+        }
+    }
 }
