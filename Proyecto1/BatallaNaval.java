@@ -11,19 +11,27 @@ public class BatallaNaval{
 
     private Scanner scanner = new Scanner(System.in); //Aca basicamente inicializamos los scanner que utilizaremos para la recoleccion de datos.
     
-    public static void main(String [] args){//Este main es temporal solo lo uso para probar codigo
-        BatallaNaval juego = new BatallaNaval();
-        juego.tableroInicial();
-
-        System.out.println("Jugador 1 coloque los barcos:");
-        juego.colcBarco(juego.tablero1);
-        juego.mostrarTab(juego.tablero1);
+    public void jugarBatallaNaval(){
         
-        System.out.println("Jugador 2 coloque los barcos:");
-        juego.colcBarco(juego.tablero2);
-        juego.mostrarTab(juego.tablero2);
+        tableroInicial();
+        System.out.println("Nociones generales:");
+        System.out.println("1. Los barcos son representados por ■");
+        System.out.println("2. El agua en los tableros es representada por -");
+        System.out.println("3. Los disparos exitosos en los barcos son representados por X");
+        System.out.println("4. Los disparos fallidos o sobre el agua son representados por O");
+        System.out.println("5. Por ultimo, pero no menos importante, recuerde divertirse y espero que disfrute del juego, usuario promedio :)");
+        System.out.println(" -------------¡Mucha Suerte!-------------");
+        System.out.println(" ----------------------------------------");
 
-        juego.iniciarTurnos();
+        System.out.println("Jugador 1, preparese y comience a colocar sus barcos por favor :)");
+        colcBarco(tablero1);
+        mostrarTab(tablero1);
+
+        System.out.println("Jugador 2, preparese y comience a colocar sus barcos por favor :)");
+        colcBarco(tablero2);
+        mostrarTab(tablero2);
+
+        iniciarTurnos();
     }
 
     public void tableroInicial(){//Por cuestiones de comodida inicialize todos los tableros llenos de agua pues despues solo los intercambio por barcos y el metodo disparar se me es mucho mas facil. 
@@ -153,7 +161,7 @@ public class BatallaNaval{
             System.out.println("¡¡Felicidades Jugador 2, eres el ganador!!");
         }else{
             if(barcsJug2==0){
-                System.out.println("Pero esperen, no quedan mas barcos en pie del jugador 1, entonces...");
+                System.out.println("Pero esperen, no quedan mas barcos en pie del jugador 2, entonces...");
                 System.out.println("¡¡Felicidades Jugador 1, eres el ganador!!");
             }
         }
