@@ -9,7 +9,7 @@ public class Interfaz{
             System.out.println("------------------------");
             System.out.println("BIENVENIDO A LA INTERFAZ");
             System.out.println("------------------------");
-            System.out.println("Con cual juego desea empezar?");
+            System.out.println("Con cual juego desea inciar?");
             System.out.println("------------------------");
             System.out.println("1 - Batalla Naval");
             System.out.println("2 - Ahorcado");
