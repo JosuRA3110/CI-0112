@@ -18,10 +18,12 @@ public class Interfaz{
 
 
             if (opcion == 1){
+                System.out.println();
                 System.out.println("Iniciando Batalla Naval...");
                 BatallaNaval jugarBatallaNav = new BatallaNaval();
                 jugarBatallaNav.jugarBatallaNaval();
             }else if (opcion == 2){
+                System.out.println();
                 System.out.println("Iniciando Ahorcado");
                 Ahorcado jugarAhorcado = new Ahorcado();
                 jugarAhorcado.dosRondas();
