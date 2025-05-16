@@ -11,6 +11,9 @@ public class BatallaNaval{
 
     private Scanner scanner = new Scanner(System.in); //Aca basicamente inicializamos los scanner que utilizaremos para la recoleccion de datos.
     
+    /**
+    * @brief En este metodo basicamente se inicia el juego, donde se daran las indicaciones generales y los jugadores podran como tal utilizar el juego en consola.
+    */
     public void jugarBatallaNaval(){
         
         tableroInicial();
@@ -47,6 +50,9 @@ public class BatallaNaval{
         iniciarTurnos();
     }
 
+    /**
+     * @brief En este metodo basicamente inicializamos los tableros por comodida para que luego se pueda intercambiar o sustitur el agua por los barcos que se deseen colocar, vea que solo recorremos el array y le colocamos el agua.
+     */
     public void tableroInicial(){//Por cuestiones de comodida inicialize todos los tableros llenos de agua pues despues solo los intercambio por barcos y el metodo disparar se me es mucho mas facil. 
         for(int i=0; i<tablero1.length; i++){
             for(int j=0; j<tablero1.length; j++){//Aca estamos recorriendo todas los espacios de la matriz, es decir, sus filas y columnas.
@@ -57,6 +63,15 @@ public class BatallaNaval{
             }//Este metodo basicamente inicializa los tablero que utilizaremos para el juego con el fin de luego modificarlos a gusto.
         }
     }
+
+    /**
+     * @brief En este metodo nos encargamos de "crear" los barcos, vea que implementamos una variable para saber el numero de barcos colocados, luego el ciclo de colocacion de barcos se repite 3 veces,
+     * luego registramos con un scanner la fila y columna de los barcos, para poder ver si dicha posicion se encuentra en el tablero con un if para ver si se puede colocar o no el barco.
+     * Posteriormente si cumple con las condiciones adecuadas, se coloca un cuadrito en el tablero que representara los barcos y se suma a la variable de barcos colocados.
+     * 
+     * @param tablero note que el parametro que recibimos es un tablero, pues como en el inicio declaramos los arrays de tabler1 y tablero2 estos seran los que se actualizaran con los barcos colocados,
+     * por lo cual, el metodo debe de recibir de parametro el tablero1 o el tablero2. 
+     */
     public void colcBarco(String[][] tablero){//Aca basicamente hacemos el metodo para que el usuario pueda colocar sus barcos 
         int barcsColc = 0;//Casi se me olvide vea que utilizamos en este metodo un parametro tablero que es un array, esto es solo para que el metodo identifique que vamos a recibir ya sea el tablero1 o el tablero2 :)
         while(barcsColc< 3){//Aca basicamente repetimos la accion de colocar barcos hasta que existan tres barcos colocados en el tablero. Pues si son exactamente 3 barcos el while se detiene, que es lo que queremos :)
@@ -87,6 +102,14 @@ public class BatallaNaval{
         }
     }
 
+    /**
+     * @brief Este metodo se encarga de basicamente mostrar los tableros.
+     * Note que lo que hacemos en el metodo es el diseño "estetico" de los tablero, para ello dejamos la esquina superior izquierda vacia con el print inicial, luego recorremos las columnas del tablero para colocar
+     * el numero de columna y separarlos, luego metemos un salto de linea para que se logre poner de forma adecuada los numeros de las filas, se reitera el proceso de las columnas con las filas. Por ultimo, mostramos 
+     * lo que tiene cada espacio de la matriz, vea que esto se hace paralelamente con las filas, pues estamos recorriendolas con un solo for por lo que requerimos mostrar lo que "tiene" cada tablero y como ya los inicilizamos
+     * y colocamos los barcos deben de mostrar dichas simbologias, note que se implemente un salto de linea por cada fila pues si no no se podria ver el orden del "tablero" porque estaria todo pegado. 
+     * @param tablero note que nuevamente unicamente se recibe de parametro un tablero, en este caso se utilizara tanto para la vista de enemigo como para los tableros de los jugadores, para mostrarlos en consola.
+     */
     public void mostrarTab(String[][] tablero){//La idea de este metodo es que cualquiera de los jugadores pueda ver su tablero y la colocacion de sus barcos.
         System.out.print("  ");//Esto basicamente me deja la esquina superior izquierda un espacio para que las columnas no se vean feas, o desajustadas. 
         for(int column=0; column < tablero.length; column++){//Vea que aca lo que hacemos es basicamente pedir los numeros de las columnas para mostrarlos en la parte arriba del tablero
@@ -104,6 +127,21 @@ public class BatallaNaval{
             System.out.println();//Aca otro salto de linea por cuestiones de orden en el tablero.
         }
     }
+
+    /**
+     * @brief Metodo para disparar a los tableros
+     * Vea que este metodo se maneja mediante un while que se reitera infinitamente hasta devolver un impacto o un fallo esto es practico para hacer un bucle de turnos hasta que alguno de los jugadores destruya todos 
+     * los barcos del otro mediante el registro de impactos. Note que en el while se registran las posiciones por disparar mediante scanners, luego se verifican que dichas posiciones esten en el tablero que entra como parametro,
+     * inclusive se utilizo un continue para evitar que la consola cierre el programa y reitere la peticion de coordenadas hasta que esten en el intervalo acordado. Luego se verifica si la posicion donde se dispara 
+     * ya se disparo anterioremente, si ese es el caso se reitera la peticion de coordenadas cone l continue.  
+     * @param tableroImpacto Note que este parametro representa los tableros 1 y 2 de los jugadores pues son los que reciben los impactos y registran si un barco fue destruido.
+     * @param vistaTabContrincante Vea que en este caso debemos de utilizar dos parametros, en este se representaran a los tableros con la vista del enemigo para poder actualizar en tiempo real los tableros mostrados
+     * en consola con el pasar de cada turno. 
+     * @return en continuidad con la explicacion del metodo, para los returns si la posicion disparada fue un barco con el if retornamos un impacto que indica que se le dio a un 
+     * barco y se sustituye el cuadrito por una X que indica que se destruyo el barco. Si el disparo dio en el agua se retorna un fallo, como indicacion de que el jugador fallo su disparo. Note que este registro se hace
+     * de forma paralela para los tableros de los jugadores como para la vista de los tableros enemigos por la utilidad de los parametros, lo cual ahorro bastante codigo. Ademas por facilidad los returns son strings, pues
+     * simplemente se llaman mediante .equals.
+     */
     //Ahora vamos con los metodos de disparar, la logica ya no me da T_T
     public String disparar(String[][] tableroImpacto, String[][] vistaTabContrincante){//Aqui cambie el metodo para que cada vez que se disapare los arrays con la vista del enemigo, es decir los vistaTab1 y 2 se actualizen con cada turno, ademas de los tableros de los jugadores, de alli que el metodo solicite o tenga de entrada dichos arrays.
         while (true) {//Ojo aca lo que decimos es que se repita esta secuencia hasta q lo que pase dentro del while se cumpla, esto con el fin de que no se dispare sobre una coordenada que anteriormente ya se disparo. 
@@ -143,6 +181,17 @@ public class BatallaNaval{
 
     }
 
+    /**
+     * @brief Metodo de Iniciar turnos:
+     * En este metodo basicamente se genera el sistema de turnos entre jugadores, note que establecimos tres variables donde vemos que la cantidad de barcos de cada jugador es de tres, y un boolean, esto para facilitar
+     * el conocimiento sobre cual jugador recibe su turno, pues solo asignamos que true es cuando juega el jugador 1 y false es el turno del jugador 2. Ahora bien hacemos un while para repetir el sistema de turnos hasta
+     * que alguno de los jugadores no tenga barcos en pie. Con los if diseñamos cada escenario, en el jugador 1 mostramos los tableros, tanto el tablero del jugador como el tablero del enemigo, esto por medio de la
+     * funcion mostrarTabs donde true asume que el turno es del jugador 1, esta funcion se explicara despues. Posterior a ello llamamos a una variable tipo String (de alli la importancia de los returns como strings en el
+     * metodo anterior) que va a ser el resultado del metodo disparar empleado, que en este caso vea que dispara en el tablero2 y en vistaTab1 pues es el turno del jugador 1, ello para actualizarlos de forma simultanea. Ahora bien, se construye la condicional 
+     * sobre si esta variable que es el resultado del metodo es un impacto, si es ese el caso disminuimos el numero de barcos del jugador 2 y se repite el turno del jugador 1 pues esta en un while. Si el resultado del metodo disparo
+     * es decir la variable resultadodisp es fallo, o cualquier otro distinto a impacto se asume que el jugador 1 fallo su disparo y se procede a repetir este mismo proceso descrito para el jugador 2. Esto hasta que alguno de los
+     * dos jugadores se quede sin barcos, que dado sea ese el caso se muestra un mensaje indicando el ganador en dependencia de cual jugador se quedo con un total de cero barcos. 
+     */
     public void iniciarTurnos(){
         int barcsJug1 = 3;//Note que aca como estamos en el primer turno lo que hacemos es que los barcos colados ya sean tres, pues desde un inicio ya los colocamos para cada jugador.
         int barcsJug2 = 3;
@@ -197,6 +246,14 @@ public class BatallaNaval{
         }
     }
 
+    /**
+     * @brief Metodo para mostrar tableros actualizados en cada turno.
+     * Vea que este metodo es llamado en IniciarTurno basicamente lo que hace es declarar dos tableros, uno que representara el tablero del jugador activo en el turno y otro que representa el tablero del enemigo con base
+     * en el jugador que este activo en el turno, esto evita tener que repetir este metodo para cada jugador en especifico. Vea que posterior a la declaracion de los tableros, asumimos que juega el jugador uno por medio de un if
+     * y en dado caso asigamos sus tableros a los arrays declarados, para luego llamar la funcion mostrarTab y mostrar ambos tableros en consola, al utilizar un if, simplemente si no es el turno del jugador 1 va a ser el turno
+     * del jugador 2 y representa el mismo proceso antes descrito. Con lo cual en cada turno se mostraran los tableros deseados. 
+     * @param jug1 Note que este parametro lo que indica es cual jugador esta por observar sus tableros, si es true el jugador uno ve sus respectivos tableros y lo mismo para el jugador 2 si es false. 
+     */
     public void mostrarTabs(boolean jug1){//Okay este metodo lo utilice en el de iniciar turnos, basicamente lo que hace es mostar los dos tableros, el del jugador y su enemigo.
         String[][] tablerojug;//Esta forma de mostrar lo hace por medio de dos arrays que representan los tableros por mostrar.
         String[][] vistaTabEnemigo;
@@ -217,6 +274,14 @@ public class BatallaNaval{
         mostrarTab(vistaTabEnemigo);
     }
 
+    /**
+     * @brief Metodo de contar barcos:
+     * Note que este metodo simplemente muestra los barcos con vida en el tablero de cada jugador, por ende, iniciamos el metodo con una variable que registre el numero de barcos de cada jugador, luego lo que hacemos
+     * es que este metodo recorra todo el tablero que se establecio de parametro, que despues solo registrara la cantidad de barcos en el tablero1 o tablero2. Luego suma 1 a la variable si encuentra una casilla con un barco
+     * y por ultimo cuando ya recorre todo el tablero retorna el contador de barcos.
+     * @param cualquierTab este parametro basicamente representa los tableros del jugador 1 y 2 que son los que nos interesan pues este metodo registra el numero de barcos con vida de cada jugador en tiempo real.
+     * @return note que el return simplemente retorna el numero de barcos en los tableros. 
+     */
     //Por ultimo, me parecio adecuado hacer un metodo para contar la cantidad de barcos de cada jugador para tener mas orden en el transcurso del juego
     public int contadorBarcos(String [][] cualquierTab){
         int contaBarc= 0;
