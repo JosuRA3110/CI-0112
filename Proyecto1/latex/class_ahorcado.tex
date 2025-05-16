@@ -1,0 +1,137 @@
+\doxysection{Ahorcado Class Reference}
+\hypertarget{class_ahorcado}{}\label{class_ahorcado}\index{Ahorcado@{Ahorcado}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ahorcado_abbba14b97ff1aff9e71e2d6ec0133de1}\label{class_ahorcado_abbba14b97ff1aff9e71e2d6ec0133de1} 
+{\bfseries Ahorcado} ()
+\begin{DoxyCompactList}\small\item\em Constructor vacio; pues los atributos son cambiados en los metodos, por lo que no es necesario definirlo. \end{DoxyCompactList}\item 
+\Hypertarget{class_ahorcado_a9c5f5e6bf8aa27738735005e05e04fc9}\label{class_ahorcado_a9c5f5e6bf8aa27738735005e05e04fc9} 
+String {\bfseries get\+Palabra\+Secreta} ()
+\begin{DoxyCompactList}\small\item\em se declaran los metodos getters, que nos permiten invocar los valores de los atributos de \doxylink{class_ahorcado}{Ahorcado} en la \doxylink{class_interfaz}{Interfaz}. Esto nos es muy util, ya que muchos metodos requieren el get\+Palabra\+Secreta por ejemplo. \end{DoxyCompactList}\item 
+\Hypertarget{class_ahorcado_ab460b8341e42ca0e802a7e040e47e346}\label{class_ahorcado_ab460b8341e42ca0e802a7e040e47e346} 
+String {\bfseries get\+Progreso} ()
+\item 
+\Hypertarget{class_ahorcado_aff50910dd50039fdb2fd2f353a1d6d54}\label{class_ahorcado_aff50910dd50039fdb2fd2f353a1d6d54} 
+String {\bfseries get\+Letras\+Malas} ()
+\item 
+\Hypertarget{class_ahorcado_a355c694626cf8bd7ba6e4c8a776d7761}\label{class_ahorcado_a355c694626cf8bd7ba6e4c8a776d7761} 
+String {\bfseries get\+Letras\+Buenas} ()
+\item 
+\Hypertarget{class_ahorcado_aeb1bb28abbcff7d50c4be058650eb06b}\label{class_ahorcado_aeb1bb28abbcff7d50c4be058650eb06b} 
+int {\bfseries get\+Intentos\+Restantes} ()
+\item 
+\Hypertarget{class_ahorcado_aeb74d7a1706de7f3485ab3ac733f9070}\label{class_ahorcado_aeb74d7a1706de7f3485ab3ac733f9070} 
+void {\bfseries set\+Palabra\+Secreta} (String palabra\+Secreta)
+\begin{DoxyCompactList}\small\item\em Metodos setters; estos nos permiten modificar los valores de nuestros atributos en la clase \doxylink{class_interfaz}{Interfaz}. \end{DoxyCompactList}\item 
+\Hypertarget{class_ahorcado_aa9a646e38f8b6f5bc14bb814f95886b9}\label{class_ahorcado_aa9a646e38f8b6f5bc14bb814f95886b9} 
+void {\bfseries set\+Letras\+Malas} (String letras\+Malas)
+\item 
+\Hypertarget{class_ahorcado_a4bf3b8555dd4b95c63714a87647519e5}\label{class_ahorcado_a4bf3b8555dd4b95c63714a87647519e5} 
+void {\bfseries set\+Letras\+Buenas} (String letras\+Buenas)
+\item 
+\Hypertarget{class_ahorcado_a1b80697fca66d599f00588b13bbc25a0}\label{class_ahorcado_a1b80697fca66d599f00588b13bbc25a0} 
+void {\bfseries set\+Intentos\+Restantes} (int intentos\+Restantes)
+\item 
+boolean \mbox{\hyperlink{class_ahorcado_a9d8f462b1b99a7b479dd88bae7d2eac6}{adivinar\+Letra}} (char letra)
+\begin{DoxyCompactList}\small\item\em Se realiza el intento de ver si la letra se ha adivinado en la palabra secreta o no. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{class_ahorcado_a86fc96251399d2690c3b9a5cf385a31b}{ha\+Ganado}} ()
+\begin{DoxyCompactList}\small\item\em Verifica si el jugador correspondiente ha adivinado en su totalidad la palabra secreta. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{class_ahorcado_a315dd5f2c006a94b97a2c38a5cf92529}{ha\+Perdido}} ()
+\begin{DoxyCompactList}\small\item\em Verifica si al jugador ya no le quedan intentos restantes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ahorcado_ad80a0056cb12d696e01b38bea4fb3d19}{dos\+Rondas}} ()
+\begin{DoxyCompactList}\small\item\em Ejecutra el juego en una mecanica de dos rondas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ahorcado_aaa341ec5063b7ecb8eff5265a6c01907}{declarar\+Ganador}} (int puntaje\+Jugador1, int puntaje\+Jugador2)
+\begin{DoxyCompactList}\small\item\em Se verifica cual de los dos jugadores tuvo mejor rendimiento en su respectiva ronda Se utilizan las variables auxiliares de dos\+Rondas para compararlas y definir al ganador\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ahorcado_a9d8f462b1b99a7b479dd88bae7d2eac6}\index{Ahorcado@{Ahorcado}!adivinarLetra@{adivinarLetra}}
+\index{adivinarLetra@{adivinarLetra}!Ahorcado@{Ahorcado}}
+\doxysubsubsection{\texorpdfstring{adivinarLetra()}{adivinarLetra()}}
+{\footnotesize\ttfamily \label{class_ahorcado_a9d8f462b1b99a7b479dd88bae7d2eac6} 
+boolean Ahorcado.\+adivinar\+Letra (\begin{DoxyParamCaption}\item[{char}]{letra}{}\end{DoxyParamCaption})}
+
+
+
+Se realiza el intento de ver si la letra se ha adivinado en la palabra secreta o no. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em letra} & es el parametro de la letra que se desea adivinar, este parametro es una variable local que se utiliza en el metodo dos\+Rondas. Primero, se verifica que la palabra no haya sido ingresada. Si se adivina, se actualiza letras\+Buenas . Si no, se actualiza letras\+Malas y se resta una vez la cantidad de intentos\+Restantes .\\
+\hline
+\end{DoxyParams}
+por default, se utiliza la variable usada como falsa, y si se ha usado \begin{DoxyReturn}{Returns}
+usada = true; 
+\end{DoxyReturn}
+\Hypertarget{class_ahorcado_aaa341ec5063b7ecb8eff5265a6c01907}\index{Ahorcado@{Ahorcado}!declararGanador@{declararGanador}}
+\index{declararGanador@{declararGanador}!Ahorcado@{Ahorcado}}
+\doxysubsubsection{\texorpdfstring{declararGanador()}{declararGanador()}}
+{\footnotesize\ttfamily \label{class_ahorcado_aaa341ec5063b7ecb8eff5265a6c01907} 
+void Ahorcado.\+declarar\+Ganador (\begin{DoxyParamCaption}\item[{int}]{puntaje\+Jugador1}{, }\item[{int}]{puntaje\+Jugador2}{}\end{DoxyParamCaption})}
+
+
+
+Se verifica cual de los dos jugadores tuvo mejor rendimiento en su respectiva ronda Se utilizan las variables auxiliares de dos\+Rondas para compararlas y definir al ganador\+: 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puntaje\+Jugador1} & \\
+\hline
+{\em puntaje\+Jugador2} & El jugador que tenga un puntaje mayor (Mayor cantidad de intentos restantes) se define como el ganador. En el caso en que ambos tengan un puntaje equivalente, se declara un empate. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ahorcado_ad80a0056cb12d696e01b38bea4fb3d19}\index{Ahorcado@{Ahorcado}!dosRondas@{dosRondas}}
+\index{dosRondas@{dosRondas}!Ahorcado@{Ahorcado}}
+\doxysubsubsection{\texorpdfstring{dosRondas()}{dosRondas()}}
+{\footnotesize\ttfamily \label{class_ahorcado_ad80a0056cb12d696e01b38bea4fb3d19} 
+void Ahorcado.\+dos\+Rondas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Ejecutra el juego en una mecanica de dos rondas. 
+
+En la primera ronda, el jugador 1 introduce la palabra secreta, y el jugador 2 le toca adivinarla, En la ronda dos el proveso es en viceversa.
+
+Usamos las variables auxiliares puntaje\+Jugador1 y puntaje\+Jugador 2 para guardar la cantidad de intentos restantes de cada jugador. Si adivina la palabra, se agregan los intentos restantes a estas variables auxiliares. Si no, igual se guarda el puntaje, pero equivalente a cero.
+
+La gracia de estas variables es que sean comparadas en declarar\+Ganador. Tambien cabe recalcar que aqui se declara la variable letra, que es la que se guarda en el array de tipo char de progreso. 
+\begin{DoxyParams}{Parameters}
+{\em letra} & letra, es el parametro que se verifica en el metodo de adivinar\+Letra; este se llama justo despues de haber de que el usuario haya ingresado una letra. Al final de las dos rondas se llama al metodo de declarar ganador, para definirlo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ahorcado_a86fc96251399d2690c3b9a5cf385a31b}\index{Ahorcado@{Ahorcado}!haGanado@{haGanado}}
+\index{haGanado@{haGanado}!Ahorcado@{Ahorcado}}
+\doxysubsubsection{\texorpdfstring{haGanado()}{haGanado()}}
+{\footnotesize\ttfamily \label{class_ahorcado_a86fc96251399d2690c3b9a5cf385a31b} 
+boolean Ahorcado.\+ha\+Ganado (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica si el jugador correspondiente ha adivinado en su totalidad la palabra secreta. 
+
+\begin{DoxyReturn}{Returns}
+false si aun en el array del progreso aun quedan espacios vacios, o sea, letras por adivinar. 
+
+true si el progreso es igual a la palabra secreta. 
+\end{DoxyReturn}
+\Hypertarget{class_ahorcado_a315dd5f2c006a94b97a2c38a5cf92529}\index{Ahorcado@{Ahorcado}!haPerdido@{haPerdido}}
+\index{haPerdido@{haPerdido}!Ahorcado@{Ahorcado}}
+\doxysubsubsection{\texorpdfstring{haPerdido()}{haPerdido()}}
+{\footnotesize\ttfamily \label{class_ahorcado_a315dd5f2c006a94b97a2c38a5cf92529} 
+boolean Ahorcado.\+ha\+Perdido (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Verifica si al jugador ya no le quedan intentos restantes. 
+
+\begin{DoxyReturn}{Returns}
+true si al los intentos restantes del jugador respectivo son equivalentes a cero. 
+
+false si aun le quedan intentos restantes. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+JOSUE-\/\+RA/\+CI-\/0112/\+Proyecto1/Ahorcado.\+java\end{DoxyCompactItemize}
