@@ -1,24 +1,11 @@
 import java.util.Scanner;
 public class Interfaz{
-    
-    /**
-     * @brief se declara el booleano jugar, que nos permite crear el ciclo que se cierra unicamente cuando el usuario ya no quiere jugar.
-     * el usuario decide que jugar mediante el scanner.
-     * si marca 1, se instancia un objeto de BatallaNaval, y se llama al metodo de jugar la batalla naval.
-     * si marca 2, se llama al metodo de dosRondas de Ahorcado, e inicia el juego.
-     * si marca 3 termina el programa.
-     * 
-     * Luego de jugar algun juego, se le pregunta al usuario si quiere volver a jugar.
-     * si marca 1, se vuelve a la interfaz inicial.
-     * si marca 2, se cierra el programa.
-     */
     public static void main(String[] args){
 
         Scanner scanner = new Scanner(System.in);
         boolean jugar = true;
 
-        
-        while(jugar == true){
+        while(jugar){
             System.out.println("------------------------");
             System.out.println("BIENVENIDO A LA INTERFAZ");
             System.out.println("------------------------");
@@ -28,16 +15,25 @@ public class Interfaz{
             System.out.println("2 - Ahorcado");
             System.out.println("3- Salir");
             int opcion = scanner.nextInt();
+            scanner.nextLine();
 
 
             if (opcion == 1){
                 System.out.println("Iniciando Batalla Naval...");
-                BatallaNaval jugarBatallaNav = new BatallaNaval();
-                jugarBatallaNav.jugarBatallaNaval();
             }else if (opcion == 2){
                 System.out.println("Iniciando Ahorcado");
-                Ahorcado jugarAhorcado = new Ahorcado();
-                jugarAhorcado.dosRondas();
+                
+                System.out.println("Nombre del jugador 1: ");
+                String nombre1 = scanner.nextLine();
+
+                System.out.println("Nombre del jugador 2: ");
+                String nombre2 = scanner.nextLine();
+
+
+                ControladorAhorcado controlador = new ControladorAhorcado(nombre1, nombre2, scanner);
+                controlador.jugar();
+
+                
             }else if (opcion == 3){
                 System.out.println("Muchas gracias por participar!");
                 jugar = false;
