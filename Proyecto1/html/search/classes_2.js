@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['interfaz_0',['Interfaz',['../class_interfaz.html',1,'']]]
+  ['controladorahorcado_0',['ControladorAhorcado',['../class_controlador_ahorcado.html',1,'']]]
 ];

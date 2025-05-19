@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tableroinicial_0',['tableroInicial',['../class_batalla_naval.html#a04d4207a5128c402adc232878918ce1d',1,'BatallaNaval']]]
+  ['recibirdisp_0',['recibirDisp',['../class_tablero.html#a432f1fdc57b495cd6752f72c1bedc670',1,'Tablero']]]
 ];

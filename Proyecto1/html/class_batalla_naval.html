@@ -113,159 +113,36 @@ $(function(){initNavTree('class_batalla_naval.html',''); initResizable(true); })
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2a1b9cca137ec66893c7b5728698561a" id="r_a2a1b9cca137ec66893c7b5728698561a"><td class="memItemLeft" align="right" valign="top"><a id="a2a1b9cca137ec66893c7b5728698561a" name="a2a1b9cca137ec66893c7b5728698561a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>jugarBatallaNaval</b> ()</td></tr>
-<tr class="memdesc:a2a1b9cca137ec66893c7b5728698561a"><td class="mdescLeft">&#160;</td><td class="mdescRight">En este metodo basicamente se inicia el juego, donde se daran las indicaciones generales y los jugadores podran como tal utilizar el juego en consola. <br /></td></tr>
+<tr class="memdesc:a2a1b9cca137ec66893c7b5728698561a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Este es el metodo principal del juego pues literalmente corre todo el juego en consola desde una vista inicial donde se brindan instrucciones hasta determinar u ganador por medio de los metodos creados anteriormente. Aca basicamente hacemos toda la validacion de turnos, colocacion de barcos en consola con los jugadores, actualizacion de tableros, y todo lo necesario para que el juego se ejecute de la mejor manera. <br /></td></tr>
 <tr class="separator:a2a1b9cca137ec66893c7b5728698561a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04d4207a5128c402adc232878918ce1d" id="r_a04d4207a5128c402adc232878918ce1d"><td class="memItemLeft" align="right" valign="top"><a id="a04d4207a5128c402adc232878918ce1d" name="a04d4207a5128c402adc232878918ce1d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>tableroInicial</b> ()</td></tr>
-<tr class="memdesc:a04d4207a5128c402adc232878918ce1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">En este metodo basicamente inicializamos los tableros por comodida para que luego se pueda intercambiar o sustitur el agua por los barcos que se deseen colocar, vea que solo recorremos el array y le colocamos el agua. <br /></td></tr>
-<tr class="separator:a04d4207a5128c402adc232878918ce1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab523fd3669603cabff33e49717ec6e81" id="r_ab523fd3669603cabff33e49717ec6e81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab523fd3669603cabff33e49717ec6e81">colcBarco</a> (String[][] tablero)</td></tr>
-<tr class="memdesc:ab523fd3669603cabff33e49717ec6e81"><td class="mdescLeft">&#160;</td><td class="mdescRight">En este metodo nos encargamos de "crear" los barcos, vea que implementamos una variable para saber el numero de barcos colocados, luego el ciclo de colocacion de barcos se repite 3 veces, luego registramos con un scanner la fila y columna de los barcos, para poder ver si dicha posicion se encuentra en el tablero con un if para ver si se puede colocar o no el barco. Posteriormente si cumple con las condiciones adecuadas, se coloca un cuadrito en el tablero que representara los barcos y se suma a la variable de barcos colocados.  <br /></td></tr>
-<tr class="separator:ab523fd3669603cabff33e49717ec6e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac21cc0a872ca1092012efa8cd0c5a8c6" id="r_ac21cc0a872ca1092012efa8cd0c5a8c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac21cc0a872ca1092012efa8cd0c5a8c6">mostrarTab</a> (String[][] tablero)</td></tr>
-<tr class="memdesc:ac21cc0a872ca1092012efa8cd0c5a8c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Este metodo se encarga de basicamente mostrar los tableros. Note que lo que hacemos en el metodo es el diseño "estetico" de los tablero, para ello dejamos la esquina superior izquierda vacia con el print inicial, luego recorremos las columnas del tablero para colocar el numero de columna y separarlos, luego metemos un salto de linea para que se logre poner de forma adecuada los numeros de las filas, se reitera el proceso de las columnas con las filas. Por ultimo, mostramos lo que tiene cada espacio de la matriz, vea que esto se hace paralelamente con las filas, pues estamos recorriendolas con un solo for por lo que requerimos mostrar lo que "tiene" cada tablero y como ya los inicilizamos y colocamos los barcos deben de mostrar dichas simbologias, note que se implemente un salto de linea por cada fila pues si no no se podria ver el orden del "tablero" porque estaria todo pegado.  <br /></td></tr>
-<tr class="separator:ac21cc0a872ca1092012efa8cd0c5a8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a970998a710aea3d17159add8c731f495" id="r_a970998a710aea3d17159add8c731f495"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a970998a710aea3d17159add8c731f495">disparar</a> (String[][] tableroImpacto, String[][] vistaTabContrincante)</td></tr>
-<tr class="memdesc:a970998a710aea3d17159add8c731f495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo para disparar a los tableros Vea que este metodo se maneja mediante un while que se reitera infinitamente hasta devolver un impacto o un fallo esto es practico para hacer un bucle de turnos hasta que alguno de los jugadores destruya todos los barcos del otro mediante el registro de impactos. Note que en el while se registran las posiciones por disparar mediante scanners, luego se verifican que dichas posiciones esten en el tablero que entra como parametro, inclusive se utilizo un continue para evitar que la consola cierre el programa y reitere la peticion de coordenadas hasta que esten en el intervalo acordado. Luego se verifica si la posicion donde se dispara ya se disparo anterioremente, si ese es el caso se reitera la peticion de coordenadas cone l continue.  <br /></td></tr>
-<tr class="separator:a970998a710aea3d17159add8c731f495"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45d81d6173b54e4fb4d80aa0ee5637ad" id="r_a45d81d6173b54e4fb4d80aa0ee5637ad"><td class="memItemLeft" align="right" valign="top"><a id="a45d81d6173b54e4fb4d80aa0ee5637ad" name="a45d81d6173b54e4fb4d80aa0ee5637ad"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>iniciarTurnos</b> ()</td></tr>
-<tr class="memdesc:a45d81d6173b54e4fb4d80aa0ee5637ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo de Iniciar turnos: En este metodo basicamente se genera el sistema de turnos entre jugadores, note que establecimos tres variables donde vemos que la cantidad de barcos de cada jugador es de tres, y un boolean, esto para facilitar el conocimiento sobre cual jugador recibe su turno, pues solo asignamos que true es cuando juega el jugador 1 y false es el turno del jugador 2. Ahora bien hacemos un while para repetir el sistema de turnos hasta que alguno de los jugadores no tenga barcos en pie. Con los if diseñamos cada escenario, en el jugador 1 mostramos los tableros, tanto el tablero del jugador como el tablero del enemigo, esto por medio de la funcion mostrarTabs donde true asume que el turno es del jugador 1, esta funcion se explicara despues. Posterior a ello llamamos a una variable tipo String (de alli la importancia de los returns como strings en el metodo anterior) que va a ser el resultado del metodo disparar empleado, que en este caso vea que dispara en el tablero2 y en vistaTab1 pues es el turno del jugador 1, ello para actualizarlos de forma simultanea. Ahora bien, se construye la condicional sobre si esta variable que es el resultado del metodo es un impacto, si es ese el caso disminuimos el numero de barcos del jugador 2 y se repite el turno del jugador 1 pues esta en un while. Si el resultado del metodo disparo es decir la variable resultadodisp es fallo, o cualquier otro distinto a impacto se asume que el jugador 1 fallo su disparo y se procede a repetir este mismo proceso descrito para el jugador 2. Esto hasta que alguno de los dos jugadores se quede sin barcos, que dado sea ese el caso se muestra un mensaje indicando el ganador en dependencia de cual jugador se quedo con un total de cero barcos. <br /></td></tr>
-<tr class="separator:a45d81d6173b54e4fb4d80aa0ee5637ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dc96bf237fc41520c8da598076f2f97" id="r_a4dc96bf237fc41520c8da598076f2f97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dc96bf237fc41520c8da598076f2f97">mostrarTabs</a> (boolean jug1)</td></tr>
-<tr class="memdesc:a4dc96bf237fc41520c8da598076f2f97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo para mostrar tableros actualizados en cada turno. Vea que este metodo es llamado en IniciarTurno basicamente lo que hace es declarar dos tableros, uno que representara el tablero del jugador activo en el turno y otro que representa el tablero del enemigo con base en el jugador que este activo en el turno, esto evita tener que repetir este metodo para cada jugador en especifico. Vea que posterior a la declaracion de los tableros, asumimos que juega el jugador uno por medio de un if y en dado caso asigamos sus tableros a los arrays declarados, para luego llamar la funcion mostrarTab y mostrar ambos tableros en consola, al utilizar un if, simplemente si no es el turno del jugador 1 va a ser el turno del jugador 2 y representa el mismo proceso antes descrito. Con lo cual en cada turno se mostraran los tableros deseados.  <br /></td></tr>
-<tr class="separator:a4dc96bf237fc41520c8da598076f2f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38449bcbc26b79611f42050c4b242c5d" id="r_a38449bcbc26b79611f42050c4b242c5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38449bcbc26b79611f42050c4b242c5d">contadorBarcos</a> (String[][] cualquierTab)</td></tr>
-<tr class="memdesc:a38449bcbc26b79611f42050c4b242c5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Metodo de contar barcos: Note que este metodo simplemente muestra los barcos con vida en el tablero de cada jugador, por ende, iniciamos el metodo con una variable que registre el numero de barcos de cada jugador, luego lo que hacemos es que este metodo recorra todo el tablero que se establecio de parametro, que despues solo registrara la cantidad de barcos en el tablero1 o tablero2. Luego suma 1 a la variable si encuentra una casilla con un barco y por ultimo cuando ya recorre todo el tablero retorna el contador de barcos.  <br /></td></tr>
-<tr class="separator:a38449bcbc26b79611f42050c4b242c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a771368ac5d6d081c392bbe54e38f693c" id="r_a771368ac5d6d081c392bbe54e38f693c"><td class="memItemLeft" align="right" valign="top"><a id="a771368ac5d6d081c392bbe54e38f693c" name="a771368ac5d6d081c392bbe54e38f693c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>limpPantalla</b> ()</td></tr>
+<tr class="memdesc:a771368ac5d6d081c392bbe54e38f693c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Este metodo aunque sea un poco feo es como un intento de limpiar la pantalla para evitar que los jugadores vean sus barcos en medio de la batalla. <br /></td></tr>
+<tr class="separator:a771368ac5d6d081c392bbe54e38f693c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f00efb24f834179b2a499c28b0ef014" id="r_a3f00efb24f834179b2a499c28b0ef014"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f00efb24f834179b2a499c28b0ef014">colocarBarcos</a> (<a class="el" href="class_jugador_batalla_naval.html">JugadorBatallaNaval</a> jugador1o2)</td></tr>
+<tr class="memdesc:a3f00efb24f834179b2a499c28b0ef014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Este metodo se encarga de que los jugadores coloquen cada uno sus barcos Basicmante permite colocar los barcos de forma manual a cada uno de los jugadores en el inicio del juego y muestre su tablero actual.  <br /></td></tr>
+<tr class="separator:a3f00efb24f834179b2a499c28b0ef014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab523fd3669603cabff33e49717ec6e81" name="ab523fd3669603cabff33e49717ec6e81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab523fd3669603cabff33e49717ec6e81">&#9670;&#160;</a></span>colcBarco()</h2>
+<a id="a3f00efb24f834179b2a499c28b0ef014" name="a3f00efb24f834179b2a499c28b0ef014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f00efb24f834179b2a499c28b0ef014">&#9670;&#160;</a></span>colocarBarcos()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BatallaNaval.colcBarco </td>
+          <td class="memname">void BatallaNaval.colocarBarcos </td>
           <td>(</td>
-          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>tablero</em></span>[][]</td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_jugador_batalla_naval.html">JugadorBatallaNaval</a></td>          <td class="paramname"><span class="paramname"><em>jugador1o2</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>En este metodo nos encargamos de "crear" los barcos, vea que implementamos una variable para saber el numero de barcos colocados, luego el ciclo de colocacion de barcos se repite 3 veces, luego registramos con un scanner la fila y columna de los barcos, para poder ver si dicha posicion se encuentra en el tablero con un if para ver si se puede colocar o no el barco. Posteriormente si cumple con las condiciones adecuadas, se coloca un cuadrito en el tablero que representara los barcos y se suma a la variable de barcos colocados. </p>
+<p>Este metodo se encarga de que los jugadores coloquen cada uno sus barcos Basicmante permite colocar los barcos de forma manual a cada uno de los jugadores en el inicio del juego y muestre su tablero actual. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tablero</td><td>note que el parametro que recibimos es un tablero, pues como en el inicio declaramos los arrays de tabler1 y tablero2 estos seran los que se actualizaran con los barcos colocados, por lo cual, el metodo debe de recibir de parametro el tablero1 o el tablero2. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a38449bcbc26b79611f42050c4b242c5d" name="a38449bcbc26b79611f42050c4b242c5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38449bcbc26b79611f42050c4b242c5d">&#9670;&#160;</a></span>contadorBarcos()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int BatallaNaval.contadorBarcos </td>
-          <td>(</td>
-          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>cualquierTab</em></span>[][]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Metodo de contar barcos: Note que este metodo simplemente muestra los barcos con vida en el tablero de cada jugador, por ende, iniciamos el metodo con una variable que registre el numero de barcos de cada jugador, luego lo que hacemos es que este metodo recorra todo el tablero que se establecio de parametro, que despues solo registrara la cantidad de barcos en el tablero1 o tablero2. Luego suma 1 a la variable si encuentra una casilla con un barco y por ultimo cuando ya recorre todo el tablero retorna el contador de barcos. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cualquierTab</td><td>este parametro basicamente representa los tableros del jugador 1 y 2 que son los que nos interesan pues este metodo registra el numero de barcos con vida de cada jugador en tiempo real. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>note que el return simplemente retorna el numero de barcos en los tableros. </dd></dl>
-
-</div>
-</div>
-<a id="a970998a710aea3d17159add8c731f495" name="a970998a710aea3d17159add8c731f495"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a970998a710aea3d17159add8c731f495">&#9670;&#160;</a></span>disparar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">String BatallaNaval.disparar </td>
-          <td>(</td>
-          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>tableroImpacto</em></span>[][], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>vistaTabContrincante</em></span>[][]&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Metodo para disparar a los tableros Vea que este metodo se maneja mediante un while que se reitera infinitamente hasta devolver un impacto o un fallo esto es practico para hacer un bucle de turnos hasta que alguno de los jugadores destruya todos los barcos del otro mediante el registro de impactos. Note que en el while se registran las posiciones por disparar mediante scanners, luego se verifican que dichas posiciones esten en el tablero que entra como parametro, inclusive se utilizo un continue para evitar que la consola cierre el programa y reitere la peticion de coordenadas hasta que esten en el intervalo acordado. Luego se verifica si la posicion donde se dispara ya se disparo anterioremente, si ese es el caso se reitera la peticion de coordenadas cone l continue. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tableroImpacto</td><td>Note que este parametro representa los tableros 1 y 2 de los jugadores pues son los que reciben los impactos y registran si un barco fue destruido. </td></tr>
-    <tr><td class="paramname">vistaTabContrincante</td><td>Vea que en este caso debemos de utilizar dos parametros, en este se representaran a los tableros con la vista del enemigo para poder actualizar en tiempo real los tableros mostrados en consola con el pasar de cada turno. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>en continuidad con la explicacion del metodo, para los returns si la posicion disparada fue un barco con el if retornamos un impacto que indica que se le dio a un barco y se sustituye el cuadrito por una X que indica que se destruyo el barco. Si el disparo dio en el agua se retorna un fallo, como indicacion de que el jugador fallo su disparo. Note que este registro se hace de forma paralela para los tableros de los jugadores como para la vista de los tableros enemigos por la utilidad de los parametros, lo cual ahorro bastante codigo. Ademas por facilidad los returns son strings, pues simplemente se llaman mediante .equals. </dd></dl>
-
-</div>
-</div>
-<a id="ac21cc0a872ca1092012efa8cd0c5a8c6" name="ac21cc0a872ca1092012efa8cd0c5a8c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac21cc0a872ca1092012efa8cd0c5a8c6">&#9670;&#160;</a></span>mostrarTab()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BatallaNaval.mostrarTab </td>
-          <td>(</td>
-          <td class="paramtype">String</td>          <td class="paramname"><span class="paramname"><em>tablero</em></span>[][]</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Este metodo se encarga de basicamente mostrar los tableros. Note que lo que hacemos en el metodo es el diseño "estetico" de los tablero, para ello dejamos la esquina superior izquierda vacia con el print inicial, luego recorremos las columnas del tablero para colocar el numero de columna y separarlos, luego metemos un salto de linea para que se logre poner de forma adecuada los numeros de las filas, se reitera el proceso de las columnas con las filas. Por ultimo, mostramos lo que tiene cada espacio de la matriz, vea que esto se hace paralelamente con las filas, pues estamos recorriendolas con un solo for por lo que requerimos mostrar lo que "tiene" cada tablero y como ya los inicilizamos y colocamos los barcos deben de mostrar dichas simbologias, note que se implemente un salto de linea por cada fila pues si no no se podria ver el orden del "tablero" porque estaria todo pegado. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tablero</td><td>note que nuevamente unicamente se recibe de parametro un tablero, en este caso se utilizara tanto para la vista de enemigo como para los tableros de los jugadores, para mostrarlos en consola. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a4dc96bf237fc41520c8da598076f2f97" name="a4dc96bf237fc41520c8da598076f2f97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dc96bf237fc41520c8da598076f2f97">&#9670;&#160;</a></span>mostrarTabs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BatallaNaval.mostrarTabs </td>
-          <td>(</td>
-          <td class="paramtype">boolean</td>          <td class="paramname"><span class="paramname"><em>jug1</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Metodo para mostrar tableros actualizados en cada turno. Vea que este metodo es llamado en IniciarTurno basicamente lo que hace es declarar dos tableros, uno que representara el tablero del jugador activo en el turno y otro que representa el tablero del enemigo con base en el jugador que este activo en el turno, esto evita tener que repetir este metodo para cada jugador en especifico. Vea que posterior a la declaracion de los tableros, asumimos que juega el jugador uno por medio de un if y en dado caso asigamos sus tableros a los arrays declarados, para luego llamar la funcion mostrarTab y mostrar ambos tableros en consola, al utilizar un if, simplemente si no es el turno del jugador 1 va a ser el turno del jugador 2 y representa el mismo proceso antes descrito. Con lo cual en cada turno se mostraran los tableros deseados. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">jug1</td><td>Note que este parametro lo que indica es cual jugador esta por observar sus tableros, si es true el jugador uno ve sus respectivos tableros y lo mismo para el jugador 2 si es false. </td></tr>
+    <tr><td class="paramname">jugador1o2</td><td>Este es simplemente el parametro del jugador que colocara los barcos en su respectivo tablero. </td></tr>
   </table>
   </dd>
 </dl>

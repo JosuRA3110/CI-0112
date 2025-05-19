@@ -20,6 +20,8 @@ public class Interfaz{
 
             if (opcion == 1){
                 System.out.println("Iniciando Batalla Naval...");
+                BatallaNaval jugarBatallaNav = new BatallaNaval();
+                jugarBatallaNav.jugarBatallaNaval();
             }else if (opcion == 2){
                 System.out.println("Iniciando Ahorcado");
                 

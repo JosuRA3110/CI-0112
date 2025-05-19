@@ -1,0 +1,78 @@
+\doxysection{Controlador\+Ahorcado Class Reference}
+\label{class_controlador_ahorcado}\index{ControladorAhorcado@{ControladorAhorcado}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Controlador\+Ahorcado} (String nombre\+J1, String nombre\+J2, Scanner scanner)
+\begin{DoxyCompactList}\small\item\em El constructor consta del nombre de los jugadores, la variable scanner y la instancia de la clase \doxyref{Ahorcado}{p.}{class_ahorcado}, para llamar a sus metodos. \end{DoxyCompactList}\item 
+\label{class_controlador_ahorcado_a3b87c6424b58ec9807b38476dc9ea09b} 
+void {\bfseries jugar} ()
+\begin{DoxyCompactList}\small\item\em se aplica la mecanica de las dos rondas para cada jugador con la logica de que gana el jugador con mas intentos restantes. Se guarda el puntaje en el int de J1 y J2. \end{DoxyCompactList}\item 
+int \textbf{ jugar\+Ronda} (\textbf{ Jugador\+Ahorcado} jugador\+Palabra, \textbf{ Jugador\+Ahorcado} jugador\+Adivina)
+\begin{DoxyCompactList}\small\item\em Aqui se juega la ronda. \end{DoxyCompactList}\item 
+void \textbf{ declarar\+Ganador} (int puntaje\+J1, int puntaje\+J2)
+\begin{DoxyCompactList}\small\item\em Se declara quien es el ganador mediante los parametros. Se comparan con condicionales y el mayor gana. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\index{ControladorAhorcado@{ControladorAhorcado}!ControladorAhorcado@{ControladorAhorcado}}
+\index{ControladorAhorcado@{ControladorAhorcado}!ControladorAhorcado@{ControladorAhorcado}}
+\doxysubsubsection{ControladorAhorcado()}
+{\footnotesize\ttfamily \label{class_controlador_ahorcado_a4ef58c525b54081cfdbed8c1695d6e3b} 
+Controlador\+Ahorcado.\+Controlador\+Ahorcado (\begin{DoxyParamCaption}\item[{String}]{nombre\+J1}{, }\item[{String}]{nombre\+J2}{, }\item[{Scanner}]{scanner}{}\end{DoxyParamCaption})}
+
+
+
+El constructor consta del nombre de los jugadores, la variable scanner y la instancia de la clase \doxyref{Ahorcado}{p.}{class_ahorcado}, para llamar a sus metodos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\+J1} & es el nombre que se le pone al jugador1 Analogamente con\\
+\hline
+{\em nombre\+J2.} & \\
+\hline
+{\em scanner} & para llamar a Scanner. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\index{ControladorAhorcado@{ControladorAhorcado}!declararGanador@{declararGanador}}
+\index{declararGanador@{declararGanador}!ControladorAhorcado@{ControladorAhorcado}}
+\doxysubsubsection{declararGanador()}
+{\footnotesize\ttfamily \label{class_controlador_ahorcado_aaf038fb6c98bab2227dac4ed2c8850c9} 
+void Controlador\+Ahorcado.\+declarar\+Ganador (\begin{DoxyParamCaption}\item[{int}]{puntaje\+J1}{, }\item[{int}]{puntaje\+J2}{}\end{DoxyParamCaption})}
+
+
+
+Se declara quien es el ganador mediante los parametros. Se comparan con condicionales y el mayor gana. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em puntaje\+J1} & \\
+\hline
+{\em puntaje\+J2} & \\
+\hline
+\end{DoxyParams}
+Si son iguales se declara un empate. \index{ControladorAhorcado@{ControladorAhorcado}!jugarRonda@{jugarRonda}}
+\index{jugarRonda@{jugarRonda}!ControladorAhorcado@{ControladorAhorcado}}
+\doxysubsubsection{jugarRonda()}
+{\footnotesize\ttfamily \label{class_controlador_ahorcado_a2926ce87a09c1cb9a04e1ce8621625c0} 
+int Controlador\+Ahorcado.\+jugar\+Ronda (\begin{DoxyParamCaption}\item[{\textbf{ Jugador\+Ahorcado}}]{jugador\+Palabra}{, }\item[{\textbf{ Jugador\+Ahorcado}}]{jugador\+Adivina}{}\end{DoxyParamCaption})}
+
+
+
+Aqui se juega la ronda. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jugador\+Palabra} & es J1 en la primera ronda, y J2 en la segunda (Los que ingresan la palabra secreta). \\
+\hline
+{\em jugador\+Adivina} & es J2 en la primera ronda, y J2 en la segunda (Los que les toca adivinar la palabra secreta). los intentos restantes definen al ganador en el siguiente metodo. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+JOSUE-\/\+RA/\+CI-\/0112/\+Proyecto1/controlador\+Ahorcado.\+java\end{DoxyCompactItemize}

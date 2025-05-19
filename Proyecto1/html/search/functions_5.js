@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iniciarturnos_0',['iniciarTurnos',['../class_batalla_naval.html#a45d81d6173b54e4fb4d80aa0ee5637ad',1,'BatallaNaval']]]
+  ['iniciarjuego_0',['iniciarJuego',['../class_ahorcado.html#a90d2d33a7e90f0972c07c51e6b5e1813',1,'Ahorcado']]]
 ];

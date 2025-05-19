@@ -1,0 +1,74 @@
+\doxysection{Tablero Class Reference}
+\label{class_tablero}\index{Tablero@{Tablero}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_tablero_a2200665ee8ab7a44f5e94afdc848ee01} 
+String[$\,$][$\,$] {\bfseries get\+Casillas} ()
+\item 
+boolean \textbf{ colc\+Barco} (int fila, int columna)
+\begin{DoxyCompactList}\small\item\em Este metodo se encarga de verificar por medio de un booleano si se puede colocar un barco en la casilla indicada por los pametros. \end{DoxyCompactList}\item 
+void \textbf{ mostrar\+Tab} ()
+\begin{DoxyCompactList}\small\item\em Este metodo se encarga de mostrar los tableros de los jugadores conforme se van agregando los barcos. \end{DoxyCompactList}\item 
+String \textbf{ recibir\+Disp} (int fila\+Disp, int columna\+Disp)
+\begin{DoxyCompactList}\small\item\em Vea que este metodo se encarga de registrar los disparos recibidos y actualizar la informacion de la casilla que los recibe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\index{Tablero@{Tablero}!colcBarco@{colcBarco}}
+\index{colcBarco@{colcBarco}!Tablero@{Tablero}}
+\doxysubsubsection{colcBarco()}
+{\footnotesize\ttfamily \label{class_tablero_a10e28aa8d8033622c66fd7d3f7bb4abd} 
+boolean Tablero.\+colc\+Barco (\begin{DoxyParamCaption}\item[{int}]{fila}{, }\item[{int}]{columna}{}\end{DoxyParamCaption})}
+
+
+
+Este metodo se encarga de verificar por medio de un booleano si se puede colocar un barco en la casilla indicada por los pametros. 
+
+Este metodo baicamente ve cada casilla indicada por los parametros de la fila y columna, para ver si esta vacia, si se encuentra en el tamaño permitido, y en dado caso si esta casilla ya posee un barco. 
+\begin{DoxyParams}{Parameters}
+{\em fila} & indice en el tablero que indica la fila por verificar \\
+\hline
+{\em columna} & indice en el tablero que indica la fila por verificar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true en el caso de que se colocara el barco correctamente, false si no se puede colocar el barco pues no esta en los parametros permitidos o ya habia un barco. 
+\end{DoxyReturn}
+\index{Tablero@{Tablero}!mostrarTab@{mostrarTab}}
+\index{mostrarTab@{mostrarTab}!Tablero@{Tablero}}
+\doxysubsubsection{mostrarTab()}
+{\footnotesize\ttfamily \label{class_tablero_a616c16ce347e6f41735c9255a902d563} 
+void Tablero.\+mostrar\+Tab (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Este metodo se encarga de mostrar los tableros de los jugadores conforme se van agregando los barcos. 
+
+Note que este tablero muestra la numeracion de las filas y columnas y su contenido sea un barco o agua que se colocaron anteriormente, para que el jugador observe progresivamente como va colocando sus barcos. \index{Tablero@{Tablero}!recibirDisp@{recibirDisp}}
+\index{recibirDisp@{recibirDisp}!Tablero@{Tablero}}
+\doxysubsubsection{recibirDisp()}
+{\footnotesize\ttfamily \label{class_tablero_a432f1fdc57b495cd6752f72c1bedc670} 
+String Tablero.\+recibir\+Disp (\begin{DoxyParamCaption}\item[{int}]{fila\+Disp}{, }\item[{int}]{columna\+Disp}{}\end{DoxyParamCaption})}
+
+
+
+Vea que este metodo se encarga de registrar los disparos recibidos y actualizar la informacion de la casilla que los recibe. 
+
+Basicamente este metodo recibe un disparo y verifica si se impacto un barco, se fallo y dio al agua o si ya se disparo con anterioridad allí con lo q actualiza constantemente el tablero posterior a cada disparo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fila\+Disp} & Basicamente indica el indice de la fila que esta siendo impacta por el disparo para poder establecer las coordenadas de disparo. \\
+\hline
+{\em columna\+Disp} & Indica la columna donde se impacta y ayuda a determinar que coordenada completa se esta afectando con el tiro. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+basicamente returna impacto si la casilla que recibe el disparo contenia un barco y la actualiza, si retorna fallo es que la casilla contenia agua y la actualiza con la simbologia apropiada, y si no es ninguna de las anteriores returna repetido que indica que ya se disparo con anterioridad en esa casilla. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+JOSUE-\/\+RA/\+CI-\/0112/\+Proyecto1/Tablero.\+java\end{DoxyCompactItemize}

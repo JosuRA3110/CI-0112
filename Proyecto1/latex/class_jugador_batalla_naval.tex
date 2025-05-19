@@ -1,0 +1,120 @@
+\doxysection{Jugador\+Batalla\+Naval Class Reference}
+\label{class_jugador_batalla_naval}\index{JugadorBatallaNaval@{JugadorBatallaNaval}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{class_jugador_batalla_naval_a4bfeaf024db76b7474c3112a1ef1bc05} 
+{\bfseries Jugador\+Batalla\+Naval} (String nombre)
+\item 
+\label{class_jugador_batalla_naval_a197465bd620dfee0bc59408378e73a68} 
+String {\bfseries get\+Nombre} ()
+\item 
+\label{class_jugador_batalla_naval_a3a334a43c2963b13e115050cc7598339} 
+\textbf{ Tablero} {\bfseries get\+Tablero\+Jug} ()
+\item 
+boolean \textbf{ colocar\+Barco\+Jug} (int fila\+Jug, int columna\+Jug)
+\begin{DoxyCompactList}\small\item\em Este metodo intenta colocar un barco en la posicion indicada por los parametros. \end{DoxyCompactList}\item 
+void \textbf{ colocar\+Barcos\+Jug} (Scanner scanner)
+\begin{DoxyCompactList}\small\item\em En este metodo se colocan como tal los barcos a travez de un parametro scanner, donde se verifican si cumplen con los rangos necesarios y si ya se contaba con un barco en esa posicion. Esto se repite hasta que el jugador colocara tres barcos. \end{DoxyCompactList}\item 
+\label{class_jugador_batalla_naval_a1f9bf82cf78ff318235bf1606878a2b6} 
+void {\bfseries mostrar\+Tablero\+Jug} ()
+\begin{DoxyCompactList}\small\item\em Este metodo muestra el tablero del jugador con el respectivo nombre del jugador. \end{DoxyCompactList}\item 
+void \textbf{ mostrar\+Tablero\+Vista\+Op} (String nombre\+Oponente)
+\begin{DoxyCompactList}\small\item\em Este metodo se encarga de mostrar el tablero del jugador rival oculto, en este caso el parametro que recibe es el nombre del jugador rival para imprimirlo correctamente en consola. \end{DoxyCompactList}\item 
+String \textbf{ disparar} (int fila\+Op, int colum\+Op, \textbf{ Jugador\+Batalla\+Naval} enemigo)
+\begin{DoxyCompactList}\small\item\em Este metodo se encarga de ejecutar la accion de disparar al tablero del oponente y actualiza el tablero del oponente conforme a ello. \end{DoxyCompactList}\item 
+boolean \textbf{ existen\+Barcos} ()
+\begin{DoxyCompactList}\small\item\em En este metodo verificamos la existencia de barcos en los jugadores, simplemente para determinar un ganador en el juego. Vea que lo que hace el metodo es recorrer los tableros para identificar si poseen o no un barco. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\index{JugadorBatallaNaval@{JugadorBatallaNaval}!colocarBarcoJug@{colocarBarcoJug}}
+\index{colocarBarcoJug@{colocarBarcoJug}!JugadorBatallaNaval@{JugadorBatallaNaval}}
+\doxysubsubsection{colocarBarcoJug()}
+{\footnotesize\ttfamily \label{class_jugador_batalla_naval_afeb12f127d2a04617458bccacdb121d2} 
+boolean Jugador\+Batalla\+Naval.\+colocar\+Barco\+Jug (\begin{DoxyParamCaption}\item[{int}]{fila\+Jug}{, }\item[{int}]{columna\+Jug}{}\end{DoxyParamCaption})}
+
+
+
+Este metodo intenta colocar un barco en la posicion indicada por los parametros. 
+
+Vea que se esta llamando a la clase tablero donde vemos el metodo colc\+Barco para verificar si se puede colocar un barco en esa posicion o no 
+\begin{DoxyParams}{Parameters}
+{\em fila\+Jug} & baciamente indica la fila donde se esta verificando si se puede colocar un barco \\
+\hline
+{\em columna\+Jug} & baciamente indica la columna donde se esta verificando si se puede colocar un barco \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retorna true en caso que se pueda y se coloca exitosamente el barco, retorna false si no se pudo colocar el barco 
+\end{DoxyReturn}
+\index{JugadorBatallaNaval@{JugadorBatallaNaval}!colocarBarcosJug@{colocarBarcosJug}}
+\index{colocarBarcosJug@{colocarBarcosJug}!JugadorBatallaNaval@{JugadorBatallaNaval}}
+\doxysubsubsection{colocarBarcosJug()}
+{\footnotesize\ttfamily \label{class_jugador_batalla_naval_a2e59771db9d1dee58afdd53c46cea723} 
+void Jugador\+Batalla\+Naval.\+colocar\+Barcos\+Jug (\begin{DoxyParamCaption}\item[{Scanner}]{scanner}{}\end{DoxyParamCaption})}
+
+
+
+En este metodo se colocan como tal los barcos a travez de un parametro scanner, donde se verifican si cumplen con los rangos necesarios y si ya se contaba con un barco en esa posicion. Esto se repite hasta que el jugador colocara tres barcos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scanner} & Basicamente es un objeto scanner que se utiliza para leer o procesar las coordenadas dadas por el jugador en consola y vistas en laas variables fila\+Colc\+Barc y columna\+Colc\+Barc. \\
+\hline
+\end{DoxyParams}
+\index{JugadorBatallaNaval@{JugadorBatallaNaval}!disparar@{disparar}}
+\index{disparar@{disparar}!JugadorBatallaNaval@{JugadorBatallaNaval}}
+\doxysubsubsection{disparar()}
+{\footnotesize\ttfamily \label{class_jugador_batalla_naval_a5c0525f49d466a196ad219cf8cb5378e} 
+String Jugador\+Batalla\+Naval.\+disparar (\begin{DoxyParamCaption}\item[{int}]{fila\+Op}{, }\item[{int}]{colum\+Op}{, }\item[{\textbf{ Jugador\+Batalla\+Naval}}]{enemigo}{}\end{DoxyParamCaption})}
+
+
+
+Este metodo se encarga de ejecutar la accion de disparar al tablero del oponente y actualiza el tablero del oponente conforme a ello. 
+
+Vea que llama al metodo recibir\+Disp para identificar si el disparo realizado acerto o no, para poder actualizar el tablero de la vista del oponente conforme a ello. 
+\begin{DoxyParams}{Parameters}
+{\em fila\+Op} & indica la fila que esta siendo disparada \\
+\hline
+{\em colum\+Op} & indica la columna que esta siendo disparada \\
+\hline
+{\em enemigo} & Basicamente instancia el jugador oponente que esta recibiendo el disparo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Parecido al metodo de recibir\+Disp, retorna Impacto si se destruyo un barco, fallo si se dio al agua, y repitio en caso de que el disparo sea sobre un mismo punto, vea que devuelve el resultado del disparo para cada uno de estos casos en especifico. Es como una cadena que indica que sucedio con el disparo en el tablero del oponente. 
+\end{DoxyReturn}
+\index{JugadorBatallaNaval@{JugadorBatallaNaval}!existenBarcos@{existenBarcos}}
+\index{existenBarcos@{existenBarcos}!JugadorBatallaNaval@{JugadorBatallaNaval}}
+\doxysubsubsection{existenBarcos()}
+{\footnotesize\ttfamily \label{class_jugador_batalla_naval_a751b61cfa720826a24e6d513c04bd5d6} 
+boolean Jugador\+Batalla\+Naval.\+existen\+Barcos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+En este metodo verificamos la existencia de barcos en los jugadores, simplemente para determinar un ganador en el juego. Vea que lo que hace el metodo es recorrer los tableros para identificar si poseen o no un barco. 
+
+\begin{DoxyReturn}{Returns}
+basicamente retorna true si eciste por lo menos un barco en el tablero y retorna false si ya no se cuentan con barcos en el tablero. 
+\end{DoxyReturn}
+\index{JugadorBatallaNaval@{JugadorBatallaNaval}!mostrarTableroVistaOp@{mostrarTableroVistaOp}}
+\index{mostrarTableroVistaOp@{mostrarTableroVistaOp}!JugadorBatallaNaval@{JugadorBatallaNaval}}
+\doxysubsubsection{mostrarTableroVistaOp()}
+{\footnotesize\ttfamily \label{class_jugador_batalla_naval_a060adc0ce506bca3789de569c45ea5ca} 
+void Jugador\+Batalla\+Naval.\+mostrar\+Tablero\+Vista\+Op (\begin{DoxyParamCaption}\item[{String}]{nombre\+Oponente}{}\end{DoxyParamCaption})}
+
+
+
+Este metodo se encarga de mostrar el tablero del jugador rival oculto, en este caso el parametro que recibe es el nombre del jugador rival para imprimirlo correctamente en consola. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\+Oponente} & Este parametro basicamente obtiene el nombre del oponente para imprimirlo adecuadamente sobre el tablero. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+JOSUE-\/\+RA/\+CI-\/0112/\+Proyecto1/Jugador\+Batalla\+Naval.\+java\end{DoxyCompactItemize}

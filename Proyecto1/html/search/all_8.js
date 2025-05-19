@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getpalabrasecreta_0',['getPalabraSecreta',['../class_ahorcado.html#a9c5f5e6bf8aa27738735005e05e04fc9',1,'Ahorcado']]]
+  ['existenbarcos_0',['existenBarcos',['../class_jugador_batalla_naval.html#a751b61cfa720826a24e6d513c04bd5d6',1,'JugadorBatallaNaval']]]
 ];

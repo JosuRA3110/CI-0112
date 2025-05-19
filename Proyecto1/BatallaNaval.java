@@ -8,6 +8,12 @@ public class BatallaNaval{
     private JugadorBatallaNaval jug2;
     private Scanner scanner = new Scanner(System.in);
     
+
+    /**
+     * @brief Este es el metodo principal del juego pues literalmente corre todo el juego en consola desde una vista inicial donde se brindan instrucciones hasta determinar u ganador por medio de los 
+     * metodos creados anteriormente. 
+     * Aca basicamente hacemos toda la validacion de turnos, colocacion de barcos en consola con los jugadores, actualizacion de tableros, y todo lo necesario para que el juego se ejecute de la mejor manera.
+     */
     public void jugarBatallaNaval(){
         System.out.println("Bienvenido a el juego Batalla Naval, por favor lea lo siguiente :)");
         System.out.println();
@@ -51,7 +57,7 @@ public class BatallaNaval{
 
             System.out.println("Vamos " + jugadorActu.getNombre() + ", es tu turno");
             jugadorActu.mostrarTableroJug();
-            jugadorActu.mostrarTableroVistaOp();
+            jugadorActu.mostrarTableroVistaOp(jugadorEnemigo.getNombre());
 
             int tableroTam = jug1.getTableroJug().getCasillas().length; 
             while(true){
@@ -71,16 +77,19 @@ public class BatallaNaval{
 
                     if(resultadoDisp.equals("impacto")){
                         System.out.println("Felicidades acertaste el disparo :)");
-                        System.out.println("Puesdes repetir tu turno");
+                        System.out.println("Puede repetir su turno");
+                        jugadorActu.mostrarTableroVistaOp(jugadorEnemigo.getNombre());
+
                     }else if(resultadoDisp.equals("fallo")){
                         System.out.println("Lamentablemente fallaste :(");
-                        turnoJug1 = false;
+                        turnoJug1 = !turnoJug1;
+                        break;
                     }else {
                         System.out.println("Ya habias disparado en esta posicion, intentalo nuevamente");
                         continue;
                     }
                     if(!jugadorEnemigo.existenBarcos()){
-                        System.out.println("Enhorabuena "+ jugadorActu.getNombre()+ "tumbaste todos los barcos, eres el ganador :)");
+                        System.out.println("Enhorabuena "+ jugadorActu.getNombre()+ " tumbaste todos los barcos, eres el ganador :)");
                         return;
                     } 
                 }catch(InputMismatchException e){
@@ -92,17 +101,25 @@ public class BatallaNaval{
         }
 
     }
+
+    /**
+     * @brief Este metodo aunque sea un poco feo es como un intento de limpiar la pantalla para evitar que los jugadores vean sus barcos en medio de la batalla. 
+     */
     public void limpPantalla(){
         for(int i=0; i<60; i++){//Aca basicamente, no se mucho sobre como limpiar la pantalla pero ya con estos 60 espacios en blanco digamooos que se limpia la pantalla ;)
             System.out.println();
         }
     }
 
+    /**
+     * @brief Este metodo se encarga de que los jugadores coloquen cada uno sus barcos
+     * Basicmante permite colocar los barcos de forma manual a cada uno de los jugadores en el inicio del juego y muestre su tablero actual. 
+     * @param jugador1o2 Este es simplemente el parametro del jugador que colocara los barcos en su respectivo tablero. 
+     */
     public void colocarBarcos(JugadorBatallaNaval jugador1o2){
         System.out.println("Te toca colocar los barcos "+ jugador1o2.getNombre());
         jugador1o2.mostrarTableroJug();
         jugador1o2.colocarBarcosJug(scanner);
     }
-
 
 }
